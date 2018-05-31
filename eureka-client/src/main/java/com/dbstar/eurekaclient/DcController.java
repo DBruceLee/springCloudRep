@@ -18,4 +18,11 @@ public class DcController {
         System.out.println(services);
         return services + "\nhello : " + consumer;
     }
+
+    @GetMapping("/consume")
+    public String consume(String name) {
+        String services = "Services: " + discoveryClient.getServices();
+        System.out.println(services);
+        return services + "\nhello : " + name;
+    }
 }
