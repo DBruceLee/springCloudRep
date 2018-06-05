@@ -13,7 +13,8 @@ public class DcController {
     DiscoveryClient discoveryClient;
 
     @GetMapping("/dc/{consumer}")
-    public String dc(@PathVariable String consumer) {
+    public String dc(@PathVariable String consumer) throws InterruptedException {
+        Thread.sleep(5000L);
         String services = "Services: " + discoveryClient.getServices();
         System.out.println(services);
         return services + "\nhello : " + consumer;
