@@ -10,6 +10,13 @@ public class ConsumerService {
     @Autowired
     RestTemplate restTemplate;
 
+    /**
+     * @Description: 服务降级
+     * @Param: [consumer]
+     * @return: java.lang.String
+     * @Author: dbstar
+     * @Date: 2018/6/5 下午3:14
+     **/
     @HystrixCommand(fallbackMethod = "fallback")
     public String consumer(String consumer) {
         String url = "http://eureka-client/dc/" + consumer;
@@ -18,6 +25,6 @@ public class ConsumerService {
     }
 
     public String fallback(String consumer) {
-        return "fallback : "+consumer;
+        return "fallback : " + consumer;
     }
 }
